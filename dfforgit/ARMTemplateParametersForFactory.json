@@ -17,6 +17,12 @@
 		"AzureSqlDatabase3_password": {
 			"value": ""
 		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://case1datalakestorage.dfs.core.windows.net/"
 		},
@@ -28,6 +34,9 @@
 		},
 		"AzureSqlDatabase3_properties_typeProperties_userName": {
 			"value": "serveradmin3"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://case1datalakestorage.dfs.core.windows.net/"
 		}
 	}
 }
