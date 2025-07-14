@@ -14,31 +14,25 @@
 			],
 			"sinks": [
 				{
-					"name": ""
+					"dataset": {
+						"referenceName": "DelimitedText8",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
 				},
 				{
 					"dataset": {
-						"referenceName": "DelimitedText5",
+						"referenceName": "DelimitedText9",
 						"type": "DatasetReference"
 					},
-					"name": "sinkgold",
-					"description": "Extracting gold from medal file into datalake"
+					"name": "sink2"
 				},
 				{
 					"dataset": {
-						"referenceName": "DelimitedText6",
+						"referenceName": "DelimitedText10",
 						"type": "DatasetReference"
 					},
-					"name": "sinksilver",
-					"description": "Extracting Silver from medal files into datalake"
-				},
-				{
-					"dataset": {
-						"referenceName": "DelimitedText7",
-						"type": "DatasetReference"
-					},
-					"name": "sinkbronze",
-					"description": "Extract Bronze from medal file into datalake"
+					"name": "sink3"
 				}
 			],
 			"transformations": [
@@ -73,37 +67,33 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 split(Medal ==\" Gold\",",
-				"     disjoint: false) ~> split1@(gold, Goldstreamm)",
-				"split1@gold split(Medal==\"Silver\",",
-				"     disjoint: false) ~> split2@(Silver, Silverstream)",
+				"source1 split(Medal==\"Gold\",",
+				"     disjoint: false) ~> split1@(Gold, GoldStream)",
+				"split1@Gold split(Medal==\"Silver\",",
+				"     disjoint: false) ~> split2@(Silver, SilverStream)",
 				"split2@Silver split(Medal==\"Bronze\",",
-				"     disjoint: false) ~> split3@(Bronze, Bronzestream)",
-				"split1@gold sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> ",
-				"split1@gold sink(allowSchemaDrift: true,",
+				"     disjoint: false) ~> split3@(Bronze, BronzeStream)",
+				"split1@Gold sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sinkgold",
+				"     skipDuplicateMapOutputs: true) ~> sink1",
 				"split2@Silver sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sinksilver",
+				"     skipDuplicateMapOutputs: true) ~> sink2",
 				"split3@Bronze sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sinkbronze"
+				"     skipDuplicateMapOutputs: true) ~> sink3"
 			]
 		}
 	}
