@@ -1,0 +1,9 @@
+{
+	"name": "dfforgit",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "03a0b64d-7a24-4a8a-8126-811568bee5bd",
+		"tenantId": "76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61"
+	}
+}
